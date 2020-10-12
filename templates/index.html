@@ -6,7 +6,7 @@
         <base href="/index.html">
         <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
         <meta name="author" content="Amber Gillenwaters, Eric McCullough, and Alicia Willard">
-        <style type="text/css" media="screen">
+        <!-- <style type="text/css" media="screen">
             #editor { 
                 position: absolute;
                 top: 0;
@@ -14,18 +14,14 @@
                 bottom: 0;
                 left: 0;
             }
-        </style>
+        </style> -->
+        <link rel="stylesheet" href="/static/css/styles.css">
 
     </head>
     <body>
 
         <div id="editor">// start writing code here</div>
-        
         <script src="https://pagecdn.io/lib/ace/1.4.12/ace.js" crossorigin="anonymous" integrity="sha256-Q9hnBpgBFstzZOr+OKFOWZWfcF5nFXO8Qz48Nmndo6U=" ></script>
-        <script>
-            var editor = ace.edit("editor");
-            editor.setTheme("ace/theme/monokai");
-            editor.session.setMode("ace/mode/javascript");
-        </script>
+        <script src="/static/js/config_editor.js"></script>
     </body>
 </html>
