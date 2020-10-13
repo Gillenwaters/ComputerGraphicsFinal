@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Learning Module</title>
-        <base href="/index.html">
-        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
-        <meta name="author" content="Amber Gillenwaters, Eric McCullough, and Alicia Willard">
-        <!-- <style type="text/css" media="screen">
-            #editor { 
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
-        </style> -->
-        <link rel="stylesheet" href="/static/css/styles.css">
 
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Learning Module</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Amber Gillenwaters, Eric McCullough, and Alicia Willard">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
 
-        <div id="editor">// start writing code here</div>
-        <script src="https://pagecdn.io/lib/ace/1.4.12/ace.js" crossorigin="anonymous" integrity="sha256-Q9hnBpgBFstzZOr+OKFOWZWfcF5nFXO8Qz48Nmndo6U=" ></script>
-        <script src="/static/js/config_editor.js"></script>
-    </body>
+<body>
+    <div class="container-fluid">
+        <h1>This is a header</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <div id="editor">// start writing code here</div>
+            </div>
+            <div class="col-md">
+                <canvas id="canvas">
+            </div>
+        </div>
+    </div>
+
+    <!-- The Ace Editor -->
+    <script src="https://pagecdn.io/lib/ace/1.4.12/ace.js" crossorigin="anonymous"
+        integrity="sha256-Q9hnBpgBFstzZOr+OKFOWZWfcF5nFXO8Qz48Nmndo6U="></script>
+
+    <!-- gl-matrix. The MDN utilizes these for their tutorials -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+        integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+        crossorigin="anonymous" defer>
+        </script>
+    
+    <!-- Custom JS -->
+    <script src="/static/js/config_editor.js"></script>
+    <script src="/static/js/canvas_handler.js"></script>
+
+    <!-- Bootstrap JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
