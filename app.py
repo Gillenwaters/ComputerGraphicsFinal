@@ -8,7 +8,7 @@ def root_controller():
     with open('./static/js/WebGL_blue.js') as fin:
         assisted_code = fin.read()
 
-    with open('./static/js/WebGL_squary_eg.js') as fin:
+    with open('./static/js/WebGL_square_eg.js') as fin:
         solution_code = fin.read()
 
     return render_template(
