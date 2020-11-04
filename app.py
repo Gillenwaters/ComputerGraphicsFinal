@@ -8,7 +8,7 @@ def root_controller():
     with open ('./static/html/smiley_tutorial.html') as fin:
         tutorial_txt = Markup(fin.read())
 
-    with open('./static/js/WebGL_blue.js') as fin:
+    with open('./static/js/smiley_face_starter.js') as fin:
         assisted_code = fin.read()
 
     with open('./static/js/smiley_face.js') as fin:

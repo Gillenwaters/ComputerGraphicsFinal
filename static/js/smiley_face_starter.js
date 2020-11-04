@@ -110,7 +110,12 @@ function initBuffers(gl) {
 
     // Now create an array of positions for the square.
 
-    const positions = draw_smiley();
+    const positions = [
+       -1.0,  1.0,
+        1.0,  1.0,
+       -1.0, -1.0,
+        1.0, -1.0
+    ]
     const num_vertices = Math.floor(positions.length / 2);
 
     // Now pass the list of positions into WebGL to build the
@@ -208,34 +213,6 @@ function drawScene(gl, programInfo, buffers, num_vertices) {
         const offset = 0;
         gl.drawArrays(gl.POINTS, offset, num_vertices);
     }
-}
-
-function draw_smiley() {
-    const positions = [];
-
-    let r = 1.0;
-    let cx = 0.0;
-    let cy = 0.0;
-
-    for (let theta = 0; theta <= 360; theta += 0.5) {
-        let x = r * Math.cos(theta * Math.PI / 180) + cx;
-        let y = r * Math.sin(theta * Math.PI / 180) + cy;
-        positions.push(x, y);
-    }
-
-    positions.push(0.5, 0.5);
-    positions.push(-0.5, 0.5);
-
-    r = 0.75;
-    cy = -0.10;
-    for (theta = 180; theta <= 360; theta += 0.5) {
-        let x = r * Math.cos(theta * Math.PI / 180) + cx;
-        let y = r * Math.sin(theta * Math.PI / 180) + cy;
-        positions.push(x, y);
-    }
-
-    console.log(positions);
-    return positions;
 }
 
 main();
