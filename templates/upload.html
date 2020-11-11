@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Learning Module</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Eric McCullough">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <h1>Tutorial Upload</h1>
+
+    <p>To upload a tutorial, the following files must be uploaded:</p>
+    <ul>
+        <li>An HTML containing the educational material for the tutorial</li>
+        <li>A JavaScript file containing a sample solution for the tutorial's exercise</li>
+        <li>A JavaScript file containing starter code for the exercise</li>
+    </ul>
+
+    <form method='post' action="/upload", enctype="multipart/form-data">
+        <div>Tutorial text</div>
+        <input type="file" id="html" name="html" accept=".html,.htm" required>
+        <div>Sample solution</div>
+        <input type="file" id="solution" name="solution" accept=".js" required>
+        <div>Starter code</div>
+        <input type="file" id="starter" name="starter" accept=".js" required>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
