@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, Markup
+from flask_sqlalchemy import SQLAlchemy
 
 UPLOAD_FOLDER = os.path.join(os.curdir, 'uploads')
 
