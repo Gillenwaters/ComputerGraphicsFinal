@@ -1,11 +1,9 @@
 import os
 from flask import Flask, render_template, request, Markup
-from flask_sqlalchemy import SQLAlchemy
 
-UPLOAD_FOLDER = os.path.join(os.curdir, 'uploads')
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config.from_object(os.environ['APP_SETTINGS'])
 
 @app.route('/')
 def home():
@@ -32,10 +30,11 @@ def tutorial():
 
     return render_template(
         'index.html',
-        tutorial_txt = tutorial_txt,
-        assisted_code = assisted_code,
-        solution_code = solution_code
+        tutorial_txt=tutorial_txt,
+        assisted_code=assisted_code,
+        solution_code=solution_code
     )
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_controller():
@@ -45,11 +44,15 @@ def upload_controller():
         starter = request.files['starter']
 
         html.save(os.path.join(app.config['UPLOAD_FOLDER'], html.filename))
-        solution.save(os.path.join(app.config['UPLOAD_FOLDER'], solution.filename))
-        starter.save(os.path.join(app.config['UPLOAD_FOLDER'], starter.filename))
+        solution.save(os.path.join(
+            app.config['UPLOAD_FOLDER'], solution.filename))
+        starter.save(os.path.join(
+            app.config['UPLOAD_FOLDER'], starter.filename))
     return render_template(
         'upload.html'
     )
 
+
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True, threaded=True)
+    print(os.environ['APP_SETTINGS'])
+    app.run()
