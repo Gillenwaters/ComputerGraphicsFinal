@@ -9,11 +9,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-from models import Tutorial
+from models import Tutorial  # noqa: E402
 
 @app.route('/')
 def home():
-
     return render_template(
         'home.html',
         tutorials = ["tutorial1", "tutorial2"]
@@ -44,18 +43,34 @@ def tutorial():
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_controller():
+    errors = []
     if request.method == 'POST':
+        name = request.form.get('name')
         html = request.files['html']
         solution = request.files['solution']
         starter = request.files['starter']
 
-        html.save(os.path.join(app.config['UPLOAD_FOLDER'], html.filename))
-        solution.save(os.path.join(
-            app.config['UPLOAD_FOLDER'], solution.filename))
-        starter.save(os.path.join(
-            app.config['UPLOAD_FOLDER'], starter.filename))
+        try:
+            tutorial = Tutorial(
+                name=name,
+                tutorial_file=html.filename,
+                starter_file=starter.filename,
+                solution_file=solution.filename
+            )
+
+            db.session.add(tutorial)
+            db.session.commit()
+
+            html.save(os.path.join(app.config['UPLOAD_DIR'], html.filename))
+            solution.save(os.path.join(
+                app.config['UPLOAD_DIR'], solution.filename))
+            starter.save(os.path.join(
+                app.config['UPLOAD_DIR'], starter.filename))
+        except:  # noqa E722
+            errors.append('Upload failed.')
     return render_template(
-        'upload.html'
+        'upload.html',
+        errors=errors
     )
 
 
