@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Let's Learn WebGL</title>
+    <title>{{ title }}<title>
     <base href="/index.html">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Amber Gillenwaters, Eric McCullough, and Alicia Willard">
@@ -13,17 +13,18 @@
 </head>
 
 <body>
-        <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
-            <a class="navbar-brand" href="/">Let's Learn WebGL</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Upload</a>
-                </li>
-            </ul>
-        </nav>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('upload') }}">Upload</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="container-fluid">
         {{ tutorial_txt }}
     </div>

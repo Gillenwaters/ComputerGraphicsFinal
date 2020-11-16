@@ -43,6 +43,7 @@ def tutorial(id):
 
         return render_template(
             'index.html',
+            title=tutorial.name,
             tutorial_txt=tutorial_txt,
             assisted_code=assisted_code,
             solution_code=solution_code
