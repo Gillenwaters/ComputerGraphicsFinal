@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, Markup
+from flask import Flask, render_template, request, Markup, abort
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -22,21 +22,33 @@ def home():
 
 @app.route('/tutorial/<id>')
 def tutorial(id):
-    with open('./static/html/smiley_tutorial.html') as fin:
-        tutorial_txt = Markup(fin.read())
+    tutorial = Tutorial.query.filter_by(id=id).first()
 
-    with open('./static/js/smiley_face_starter.js') as fin:
-        assisted_code = fin.read()
+    if tutorial is not None:
+        tutorial_path = os.path.join(
+            app.config['UPLOAD_DIR'], tutorial.tutorial_file)
+        assisted_path = os.path.join(
+            app.config['UPLOAD_DIR'], tutorial.starter_file)
+        solution_path = os.path.join(
+            app.config['UPLOAD_DIR'], tutorial.solution_file)
 
-    with open('./static/js/smiley_face.js') as fin:
-        solution_code = fin.read()
+        with open(tutorial_path) as fin:
+            tutorial_txt = Markup(fin.read())
 
-    return render_template(
-        'index.html',
-        tutorial_txt=tutorial_txt,
-        assisted_code=assisted_code,
-        solution_code=solution_code
-    )
+        with open(assisted_path) as fin:
+            assisted_code = fin.read()
+
+        with open(solution_path) as fin:
+            solution_code = fin.read()
+
+        return render_template(
+            'index.html',
+            tutorial_txt=tutorial_txt,
+            assisted_code=assisted_code,
+            solution_code=solution_code
+        )
+    else:
+        abort(404)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
