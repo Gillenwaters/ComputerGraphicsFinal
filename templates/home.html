@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Let's Learn WebGL</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Amber Gillenwaters, Eric McCullough, and Alicia Willard">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Upload</a>
+            </li>
+        </ul>
+    </nav>
+
+<body> 
+    <div class="col-12">
+        <h1>Let's Learn WebGL!</h1>
+        <p>
+            <i>Let's Learn WebGL</i> is a website that provides WebGL tutorials.
+        </p>
+        <h3>What's WebGL?</h3>
+        <p>
+            WebGL is short for Web Graphics Library. It's a JavaScript API that allows programmers to create graphics in 
+            HTML5 canvas elements. The best part? No plug-ins required! We've made learning even easier by providing
+            an online text editor and a canvas for your graphics. To test it out, click on one of the tutorials below.
+        </p>
+        <p>
+            This information (and much more about WebGL) can be found at this MDN article: <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">MDN article</a>
+        </p>
+        <p>
+            If you would like to upload your own WebGL tutorial for other users, check out the upload page.
+        </p>
+        <h3>Tutorials</h3>
+        <nav id = "tutorial_list" class="nav flex-column">
+            {% for tutorial in tutorials %}
+            <a class="nav-link" href="/tutorial?id=1">{{ tutorial }}</a>
+            {% endfor %}
+        </nav>
+
+    </div>
+</body>
+
+</html>
