@@ -8,23 +8,21 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-
 from models import Tutorial  # noqa: E402
+
 
 @app.route('/')
 def home():
+    tutorials = db.session.query(Tutorial).all()
     return render_template(
         'home.html',
-        tutorials = ["tutorial1", "tutorial2"]
+        tutorials=tutorials
     )
 
-@app.route('/tutorial')
-def tutorial():
-    id = request.args.get('id')
-    print(id)
-    #eventually query the database here to get the corresponding tutorial
 
-    with open ('./static/html/smiley_tutorial.html') as fin:
+@app.route('/tutorial/<id>')
+def tutorial(id):
+    with open('./static/html/smiley_tutorial.html') as fin:
         tutorial_txt = Markup(fin.read())
 
     with open('./static/js/smiley_face_starter.js') as fin:
@@ -42,7 +40,7 @@ def tutorial():
 
 
 @app.route('/upload', methods=['GET', 'POST'])
-def upload_controller():
+def upload():
     errors = []
     if request.method == 'POST':
         name = request.form.get('name')
