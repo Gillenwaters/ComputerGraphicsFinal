@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Upload Tutorials</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Eric McCullough">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('upload') }}">Upload</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Tutorial Upload</h1>
+
+        <p>To upload a tutorial, the following files must be uploaded:</p>
+        <ul>
+            <li>An HTML containing the educational material for the tutorial</li>
+            <li>A JavaScript file containing a sample solution for the tutorial's exercise</li>
+            <li>A JavaScript file containing starter code for the exercise</li>
+        </ul>
+
+        <form method='post' action="/upload", enctype="multipart/form-data">
+            <label for="name">Tutorial title:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="html">Tutorial text:</label>
+            <input type="file" id="html" name="html" accept=".html,.htm" required><br><br>
+            <label for="solution">Sample solution:</label>
+            <input type="file" id="solution" name="solution" accept=".js" required><br><br>
+            <label for="starter">Starter code:</label>
+            <input type="file" id="starter" name="starter" accept=".js" required><br><br>
+            <input type="submit">
+        </form>
+        <br>
+        {% for error in errors %}
+            <h4>{{ error }}</h4>
+        {% endfor %}
+    </div>
+
+    <!-- Bootstrap JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

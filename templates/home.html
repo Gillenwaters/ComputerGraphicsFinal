@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
         <a class="navbar-brand" href="/">Let's Learn WebGL</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link">Upload</a>
+                <a class="nav-link" href="{{ url_for('upload') }}">Upload</a>
             </li>
         </ul>
     </nav>
@@ -45,7 +45,7 @@
         <h3>Tutorials</h3>
         <nav id = "tutorial_list" class="nav flex-column">
             {% for tutorial in tutorials %}
-            <a class="nav-link" href="/tutorial?id=1">{{ tutorial }}</a>
+            <a class="nav-link" href="{{ url_for('tutorial', id=tutorial.id) }}">{{ tutorial.name }}</a>
             {% endfor %}
         </nav>
 
