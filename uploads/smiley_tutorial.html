@@ -5,7 +5,7 @@
     All WebGL graphics are rendered within a <code>&ltcanvas&gt</code> html attribute. Before any graphics can be rendered, you must first access a canvas object in the DOM.
 </p>
 
-<pre><code>
+<pre class="js"><code>
 const <var>canvas</var> = document.querySelector("#canvas");
 </code></pre>
 
@@ -17,7 +17,7 @@ const <var>canvas</var> = document.querySelector("#canvas");
     WebGL may not be available, so it's a good idea to provide error handling for this scenario.
 </p>
 
-<pre><code>
+<pre class="js"><code>
 const <var>gl</var> = canvas.getContext("webgl");
 
 if (gl === null) {
@@ -35,7 +35,7 @@ if (gl === null) {
     can embed your GLSL code into JavaScript as a string.
 </p>
 
-<pre><code>
+<pre class="js"><code>
 const vsSource = `
     attribute vec4 aVertexPosition;
 
@@ -80,7 +80,7 @@ const vsSource = `
     fragment shaders inform WebGL about how the shapes composed by WebGL should be rendered, such as what color items should be. 
 </p>
 
-<pre><code>
+<pre class="js"><code>
     const fsSource = `
         void main() {
             gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
@@ -101,7 +101,7 @@ const vsSource = `
     on to a user's GPU to render graphical scenes as though they were running natively on their desktop.
 </p>
 
-<pre><code>
+<pre class="js"><code>
     //
     // creates a shader of the given type, uploads the source and
     // compiles it.
@@ -139,7 +139,7 @@ const vsSource = `
     <code>initShaderProgram</code> code to see how this is done.
 </p>
 
-<pre><code>
+<pre class="js"><code>
     //
     // creates a shader of the given type, uploads the source and
     // compiles it.
@@ -174,7 +174,7 @@ const vsSource = `
     vertex shader to operate on.
 </p>
 
-<pre><code>
+<pre class="js"><code>
     function initBuffers(gl) {
 
         // Create a buffer for the square's positions.
@@ -225,7 +225,7 @@ const vsSource = `
     together and render the vertices we've defined.
 </p>
 
-<pre><code>
+<pre class="js"><code>
     function drawScene(gl, programInfo, buffers, num_vertices) {
         gl.clearColor(0.0, 0.0, 0.0, 1.0);  // Clear to black, fully opaque
         gl.clearDepth(1.0);                 // Clear everything
