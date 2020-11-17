@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Introduction</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Amber Gillenwaters">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Introduction</h1>
+
+        <p>In the following module, you will learn to create two-dimensional objects using WebGL, intended as a
+            foundation to design more complex graphics implementations using the framework.</p>
+        <p>First, you will learn about the WebGL context, including the implementation of shaders and buffers. A vertex
+            shader and fragment shader are required anytime an image is drawn. A buffer is a fixed-sized chunk of memory
+            used for efficient storage and access when processing streams of binary data in order to create a visual
+            representation of an object.</p>
+
+        <h3>Forms of Data accepted by Shaders</h3>
+        <ul>
+            <li>attributes - data derived from buffers</li>
+            <li>textures - data from pixels</li>
+            <li>uniforms - values that remain the same for all vertices of a given call to draw, such as an offset
+            </li>
+            <li>varyings - data derived from vertex shader and interpolated</li>
+        </ul>
+
+        <h3>Types of Shaders</h3>
+        <ul>
+            <li>vertex shader - generates clip space coordinates. can accept attributes, textures, or uniforms</li>
+            <li>fragment shader - provides a color for the current pixel being rasterized. can accept textures,
+                uniforms, or varyings</li>
+        </ul>
+        <p>After being provided code with context and shaders, you have the opportunity to practice using WebGL with
+            a suggested task and a code base to get you started. To review relevent terms or the parameters and
+            functions used at any time, see the Glossary tab.</p>
+
+        <!-- Bootstrap JS dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

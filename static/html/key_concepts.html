@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Key Concepts</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Eric McCullough">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="stylesheet" href="/path/to/styles/default.css">
+    <script src="/path/to/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Key Concepts</h1>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-xl-6">
+                    <ul class="nav nav-tab">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="context-tab" data-toggle="tab" href="#context">Context</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="shaders-tab" data-toggle="tab" href="#shaders">Shaders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="buffers-tab" data-toggle="tab" href="#buffers">Buffers</a>
+                        </li>
+                    </ul>
+
+                    <div id="key_concept-tabs" class="tab-content">
+
+                        <div id="context" class="key_concept_tab tab-pane fade show active">
+
+                            <p>The Document Object Model (DOM) is an Application Programming Interface (API) for HTML
+                                documents.
+                                Before any graphics can be rendered, you must first access a canvas object in the DOM.
+                                WebGL
+                                graphics are rendered within a &lt;canvas&gt; HTML attribute.
+                            </p>
+
+                            <pre><code class="language-javascript">
+    const canvas = document.querySelector(&quot;#canvas&quot;);</code></pre>
+
+                            <p> Next, create a WebGL context. The context gives you a handle with which you can call
+                                WebGL
+                                functions for a particular canvas.
+                            </p>
+
+                            <pre><code class="language-javascript">
+    const gl = canvas.getContext(&quot;webgl&quot;);</code></pre>
+
+                            <p>While WebGL is widely available and supported by most browsers, some users may be using
+                                outdated
+                                browsers or have computers with severe resource limitations. In this case, WebGL may not
+                                be
+                                available, so
+                                it’s a good idea to provide error handling for this scenario.
+                            </p>
+
+                            <pre><code class="language-javascript">
+    if (gl === null) {
+        alert(&quot;Unable to initialize WebGL. Your browser or machine may not support it&quot;);
+        return;
+    } </code></pre>
+
+                        </div>
+
+                        <div id="shaders" class="key_concept_tab tab-pane fade show active">
+
+                            <p>All shapes are initially rendered as a collection of vertices defining where the sides of
+                                the
+                                shape meet. Shaders are written in GLSL, a C like language built specifically for
+                                creating
+                                shaders. In
+                                WebGL, you can embed your GLSL code into JavaScript as a string.</p>
+
+                            <h3>Shader Attributes</h3>
+
+                            <p>aVertexPosition - declared as an attribute in the form of a vector comprised of four
+                                floating
+                                point numbers (vec4). Each time the vsSource shader is called, a new value will be
+                                provided
+                                \for aVertexPosition. In three-dimensional rendering, a vector must be defined in
+                                relation
+                                to the \X, Y, Z, and W axis. This tutorial considers only the X and Y axis.
+                            </p>
+
+                            <p>uModelViewMatrix &amp; uProjectionMatrix - defined as uniform mat4 variables. Whereas
+                                attributes can be compared to runtime parameters, uniforms are similar to global
+                                variables.
+                                At a
+                                later point in the program, you will define these values and they will remain static for
+                                the
+                                duration of the rendering logic. mat4 indicates that these variables are 4x4 matrices of
+                                floating
+                                point numbers. <br /><br />In 3D graphics, the 3D object defined by a collection of
+                                vertices
+                                must
+                                be “flattened” into the 2D space of the screen. This is accomplished by multiplying the
+                                projection matrix, model view matrix, and the vertex vector. For now, don’t worry about
+                                the
+                                mathematical specifics, instead just understand that
+
+                                <span
+                                    class="math inline"><em>g</em><em>l</em>_<em>P</em><em>o</em><em>s</em><em>i</em><em>t</em><em>i</em><em>o</em><em>n</em> = <em>u</em><em>P</em><em>r</em><em>o</em><em>j</em><em>e</em><em>c</em><em>t</em><em>i</em><em>o</em><em>n</em><em>M</em><em>a</em><em>t</em><em>r</em><em>i</em><em>x</em> * <em>u</em><em>M</em><em>o</em><em>d</em><em>e</em><em>l</em><em>V</em><em>i</em><em>e</em><em>w</em><em>M</em><em>a</em><em>t</em><em>r</em><em>i</em><em>x</em> * <em>a</em><em>V</em><em>e</em><em>r</em><em>t</em><em>e</em><em>x</em><em>P</em><em>o</em><em>s</em><em>i</em><em>t</em><em>i</em><em>o</em><em>n</em>
+                                </span> renders the vertex on screen at the proper X, Y coordinates.
+                            </p>
+
+                            <p>gl_PointSize - indicates to WebGL how large each vertex should be drawn. This is not set
+                                when
+                                vertices are being used to compose more complicated shapes, but because this lab focuses
+                                on
+                                drawing vertices as stand alone points, it is necessary.
+                            </p>
+                            <pre><code class="language-javascript">
+    const vsSource = `
+        attribute vec4 aVertexPosition;
+        uniform mat4 uModelViewMatrix;
+        uniform mat4 uProjectionMatrix;
+                                
+    void main() {
+        gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+        gl_PointSize = 5.0;
+    }`;</code></pre>
+
+                            <h3>Fragment Shaders</h3>
+
+                            <p>All objects, either 2D or 3D, in WebGL are initially represented as a collection of
+                                vertices.
+                                For example, a triangle is represented by three vertices each representing one corner.
+                                While
+                                vertex shaders are used to define the position of a vertex and, in this case, their
+                                size,
+                                fragment \shaders
+                                inform WebGL about how the shapes composed by WebGL should be rendered, such as what
+                                color
+                                items should be.
+                            </p>
+
+                            <p>Similar to how gl_PointSize defines how large a vertex should be drawn, gl_FragColor
+                                tells
+                                WebGL what color a fragment should be drawn in RGBA format. The example below will set
+                                the
+                                drawn point \to yellow.
+                            </p>
+
+                            <pre><code class="language-javascript">
+        const fsSource = `
+            void main() {
+                gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
+            }`;</code></pre>
+
+                            <h3>Shaders Initialization</h3>
+
+                            <p>We’ve defined two shaders, but the real magic of WebGL is being able to compile and load
+                                these programs on to a user’s GPU to render graphical scenes as though they were running
+                                natively on their desktop.
+                            </p>
+
+                            <p>The function loadShader(gl, type, source) accepts type and source as input, and returns a
+                                shader by generating a shader of the given type, uploading the source, and compiling it.
+                            </p>
+
+                            <pre><code class="language-javascript">
+        function loadShader(gl, type, source) {
+                
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source); // Send source to shader object
+            gl.compileShader(shader); // Compile the shader program
+                                    
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) { // See if it compiled successfully
+                alert('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+                                    
+            return shader;
+        }</code></pre>
+
+                            <p>The loadShader function first creates a shader object, then loads the source code for the
+                                program
+                                and
+                                compiles it using the WebGL context. If this is accomplished successfully, the shader
+                                object
+                                is
+                                returned
+                                to the caller.
+                            </p>
+
+                            <p>In WebGL, individual shaders are used to compose Program objects. Let’s take a look at
+                                the
+                                initShaderProgram code to see how this is done.
+                            </p>
+
+                            <p>The function initShaderProgram initializes a shader program, so WebGL knows how to draw
+                                our
+                                data.
+                                It
+                                accepts as input the shader and fragment shaders described above and returns a series of
+                                instructions
+                                for WebGL.
+                            </p>
+
+                            <pre><code class="language-javascript">
+    function initShaderProgram(gl, vsSource, fsSource) {
+                
+        const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
+        const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
+                                
+        const shaderProgram = gl.createProgram(); // Create the shader program
+        gl.attachShader(shaderProgram, vertexShader); // connects vertex shader to program
+        gl.attachShader(shaderProgram, fragmentShader); // connects fragment shader to program
+        gl.linkProgram(shaderProgram); //generates executable that will run on programmable vertex processor 
+                                    
+        if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {  // If creating the shader program failed, alert
+            alert('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
+                return null;
+        }
+                                
+        return shaderProgram;
+    }</code></pre>
+
+                        </div>
+
+                        <div id="buffers" class="key_concept_tab tab-pane fade">
+
+                            <p>We’ve compiled and loaded our shaders into a program. Next, let’s load some data for our
+                                vertex
+                                shader to operate on.
+                            </p>
+
+                            <p>First, we call gl.createBuffer to create memory we can load vertex positions into. Then,
+                                we
+                                bind
+                                the buffer so that operations called by WebGL will operate on our positionBuffer. We can
+                                then take a
+                                JavaScript array of floating point numbers, and read it into our WebGL buffer using
+                                bufferData. Finally, we
+                                return an object containing the WebGL buffer and the number of vertices the buffer
+                                contains.
+                            </p>
+
+                            <pre><code class="language-javascript">  
+    function initBuffers(gl) {
+                
+        const positionBuffer = gl.createBuffer(); // Create a buffer for the square's positions.
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer); // Select positionBuffer to apply buffer operations to from this point forward.
+                                
+        const positions = [ // Create array of positions for square
+                                
+            -1.0,  1.0,
+            1.0,  1.0,
+            -1.0, -1.0,
+            1.0, -1.0
+        ];
+        
+        const num_vertices = Math.floor(positions.length / 2);
+                            
+        gl.bufferData(gl.ARRAY_BUFFER, // pass the list of positions into WebGL to build shape by creating a Float32Array from the JavaScript array, then use it to fill current buffer
+            new Float32Array(positions),
+            gl.STATIC_DRAW);
+                                
+            return [{
+                position: positionBuffer,
+            }, num_vertices];
+    }</code></pre>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

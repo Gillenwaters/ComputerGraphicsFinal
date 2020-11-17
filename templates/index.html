@@ -15,12 +15,22 @@
 <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
         <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('home') }}">Home</a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('upload') }}">Upload</a>
+                <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
             </li>
         </ul>
     </nav>
@@ -67,7 +77,7 @@
         integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
         crossorigin="anonymous" defer>
         </script>
-    
+
     <!-- Custom JS -->
     <script src="/static/js/config_editor.js"></script>
     <script src="/static/js/canvas_handler.js"></script>

@@ -12,19 +12,27 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
-        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('upload') }}">Upload</a>
-            </li>
-        </ul>
-    </nav>
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+    <a class="navbar-brand" href="/">Let's Learn WebGL</a>
 
-<body> 
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
+        </li>
+    </ul>
+</nav>
+
+<body>
+
     <div class="col-12">
         <h1>Let's Learn WebGL!</h1>
         <p>
@@ -32,18 +40,19 @@
         </p>
         <h3>What's WebGL?</h3>
         <p>
-            WebGL is short for Web Graphics Library. It's a JavaScript API that allows programmers to create graphics in 
+            WebGL is short for Web Graphics Library. It's a JavaScript API that allows programmers to create graphics in
             HTML5 canvas elements. The best part? No plug-ins required! We've made learning even easier by providing
             an online text editor and a canvas for your graphics. To test it out, click on one of the tutorials below.
         </p>
         <p>
-            This information (and much more about WebGL) can be found at this MDN article: <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">MDN article</a>
+            This information (and much more about WebGL) can be found at this MDN article: <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">MDN article</a>
         </p>
         <p>
             If you would like to upload your own WebGL tutorial for other users, check out the upload page.
         </p>
         <h3>Tutorials</h3>
-        <nav id = "tutorial_list" class="nav flex-column">
+        <nav id="tutorial_list" class="nav flex-column">
             {% for tutorial in tutorials %}
             <a class="nav-link" href="{{ url_for('tutorial', id=tutorial.id) }}">{{ tutorial.name }}</a>
             {% endfor %}
