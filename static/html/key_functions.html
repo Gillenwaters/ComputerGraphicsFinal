@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Key Functions</title>
+    <base href="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Amber Gillenwaters">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Key Functions</h1>
+        <strong>
+            <p>The following is a brief explanation of functions used in our sample implementation, listed in order of
+                appearance. This summary is not exhaustive and may not include all available parameters. </p>
+            <p>
+                For more information and details, visit our sources. This information was primarily derived from the MDN
+                web docs
+                for
+                <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext">WebGLRenderingContext</a>,
+                with some information included from their <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> and <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement">HTMLCanvasElement</a>
+                documentation pages.
+            </p>
+        </strong>
+        <p><em>document.querySelector(selectors)</em> - a Document method that accepts as input a DOMString consisting
+            of a valid CSS selector string. returns the first Element object within the document matching the specified
+            selector or group of selectors. If no matches are found, null is returned</p>
+        <p><em>canvas.getContext(contextType)</em> - an HTMLCanvasElement method that accepts as input a DOMString
+            consisting of the context identifier defining the drawing context associated to the canvas - in our case we
+            are specifying “webgl”. returns either a drawing context on the canvas. will return null if context
+            identifier is unsupported or canvas has already been set to a different context mode</p>
+        <p><em>gl.createShader(type)</em> - a WebGLRenderingContext method accepts input of type gl.VERTEX_SHADER or
+            gl.FRAGMENT_SHADER. returns a modifiable WebGL shader</p>
+        <p><em>gl.getShaderParameter(shader, pname)</em> - a WebGLRenderingContext method accepts input
+            specifying the shader and information required. when COMPILE_STATUS is entered as parameter (pname), returns
+            a GLboolean indicating whether or not the last shader compilation was successful</p>
+        <p><em>gl.createProgram()</em> - a WebGLRenderingContext method that creates and initializes a WebGLProgram
+            object, linking compiled GLSL vertex shader and GLSL fragment shader into a usable program</p>
+        <p><em>gl.AttachShader(program, shader)</em> - a WebGLRenderingContext method that specifies shaders to be
+            included in link operations </p>
+        <p><em>gl.LinkProgram(program)</em> - a WebGLRenderingContext method that links the specified program given the
+            vertex shader and fragment shader are declared appropriately and requirements are met</p>
+        <p><em>gl.getProgramParameter(program, pname)</em> - a WebGLRenderingContext method accepts input
+            specifying the program and information required. when LINK_STATUS is entered as parameter (pname), returns
+            a GLboolean indicating whether or not the last link operation was successful</p>
+        <p><em>gl.createBuffer()</em> - a WebGLRenderingContext method that stores data which might include vertices or
+            colors </p>
+        <p><em>gl.bindBuffer(target, buffer)</em> - a WebGLRenderingContext method that specifies a target binding
+            point, such as an ARRAY_BUFFER containing vertex indices or an ELEMENT_ARRAY_BUFFER containing the indices
+            of elements that should be bound to a WebGL buffer and will serve to define the behavior of the associated
+            objects</p>
+
+    </div>
+    <!-- Bootstrap JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
