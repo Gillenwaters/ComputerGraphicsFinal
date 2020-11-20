@@ -30,6 +30,10 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('relevant_functions') }}">Relevant Functions</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
             </li>
         </ul>
@@ -38,12 +42,16 @@
     <div class="container">
         <h1>Introduction</h1>
 
-        <p>In the following module, you will learn to create two-dimensional objects using WebGL, intended as a
+        <p class="text-info">
+            In the following module, you will learn to create two-dimensional objects using WebGL, intended as a
             foundation to design more complex graphics implementations using the framework.</p>
-        <p>First, you will learn about the WebGL context, including the implementation of shaders and buffers. A vertex
-            shader and fragment shader are required anytime an image is drawn. A buffer is a fixed-sized chunk of memory
+        <p class="text-info">First, you will learn about the WebGL context, including the implementation of shaders
+            and buffers. A vertex
+            shader and fragment shader are required anytime an image is drawn. A buffer is a fixed-sized chunk of
+            memory
             used for efficient storage and access when processing streams of binary data in order to create a visual
             representation of an object.</p>
+
 
         <h3>Forms of Data accepted by Shaders</h3>
         <ul>

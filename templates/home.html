@@ -17,14 +17,21 @@
 
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-link" href="{{ url_for('tutorials') }}">Tutorials</a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('relevant_functions') }}">Relevant Functions</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
         </li>
@@ -45,11 +52,16 @@
             an online text editor and a canvas for your graphics. To test it out, click on one of the tutorials below.
         </p>
         <p>
-            This information (and much more about WebGL) can be found at this MDN article: <a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">MDN article</a>
+            This information (and much more about WebGL) can be found at <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL: 2D and 3D graphics for the
+                web</a> from Mozilla Developer Network (MDN).
         </p>
         <p>
-            If you would like to upload your own WebGL tutorial for other users, check out the upload page.
+            To get started, review the <a href="{{ url_for('introduction') }}">Introduction</a> and <a
+                href="{{ url_for('key_concepts') }}">Key Concepts</a> pages. Reference pages are provided including
+            further details on select <a href="{{ url_for('relevant_functions') }}">functions</a> and <a
+                href="{{ url_for('glossary') }}">terms</a>. When you are
+            ready to try it out, begin tutorial activities listed below.
         </p>
         <h3>Tutorials</h3>
         <nav id="tutorial_list" class="nav flex-column">
