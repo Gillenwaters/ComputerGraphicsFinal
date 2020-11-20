@@ -41,12 +41,11 @@
             <p>The following is a brief explanation of functions used in our sample implementation, listed in order of
                 appearance. This summary is not exhaustive and may not include all available parameters. </p>
             <p>
-                For more information and details, visit our sources. This information was primarily derived from the MDN
-                web docs
-                for
+                For more information and details, visit our sources. This information was primarily derived from the
+                open-source Mozilla Developer Network (MDN) web docs for
                 <a
                     href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext">WebGLRenderingContext</a>,
-                with some information included from their <a
+                with some information included from MDN's <a
                     href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> and <a
                     href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement">HTMLCanvasElement</a>
                 documentation pages.
@@ -76,9 +75,19 @@
         <p><em>gl.createBuffer()</em> - a WebGLRenderingContext method that stores data which might include vertices or
             colors </p>
         <p><em>gl.bindBuffer(target, buffer)</em> - a WebGLRenderingContext method that specifies a target binding
-            point, such as an ARRAY_BUFFER containing vertex indices or an ELEMENT_ARRAY_BUFFER containing the indices
-            of elements that should be bound to a WebGL buffer and will serve to define the behavior of the associated
+            point, such as an ARRAY_BUFFER containing vertex indices, or an ELEMENT_ARRAY_BUFFER containing the indices
+            of elements, that should be bound to a WebGL buffer and will serve to define the behavior of the associated
             objects</p>
+        <p><em>Math.floor()</em> - a built-in Javascript function that returns the largest integer less than or equal to
+            a given
+            number </p>
+        <p><em>gl.bufferData(target, size, usage)</em> - a WebGLRenderingContext method that initializes and creates the
+            buffer object's data store where the target binding point may include an ARRAY_BUFFER or
+            ELEMENT_ARRAY_BUFFER, the size is specified in bytes, and usage may include STATIC_DRAW, STREAM_DRAW, or
+            DYNAMIC_DRAW
+
+
+
 
     </div>
     <!-- Bootstrap JS dependencies -->
