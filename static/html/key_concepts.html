@@ -21,26 +21,27 @@
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('tutorials') }}">Tutorials</a>
+                <a class="nav-link" href={{ url_for('home') }}">Tutorials</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
+                <a class="nav-link" href="/static/html/introduction.html">Introduction</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
+                <a class="nav-link" href="static/html/key_concepts.html">Key Concepts</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('relevant_functions') }}">Relevant Functions</a>
+                <a class="nav-link" href="/static/html/relevant_functions.html">Relevant Functions</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
+                <a class="nav-link" href="/static/html/glossary.html">Glossary</a>
             </li>
         </ul>
     </nav>
+
     <div class="container">
         <h1>Key Concepts</h1>
 

@@ -12,65 +12,68 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
-    <a class="navbar-brand" href="/">Let's Learn WebGL</a>
-
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('tutorials') }}">Tutorials</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('introduction') }}">Introduction</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('key_concepts') }}">Key Concepts</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('relevant_functions') }}">Relevant Functions</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('glossary') }}">Glossary</a>
-        </li>
-    </ul>
-</nav>
-
 <body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="/">Let's Learn WebGL</a>
 
-    <div class="col-12">
-        <h1>Let's Learn WebGL!</h1>
-        <p>
-            <i>Let's Learn WebGL</i> is a website that provides WebGL tutorials.
-        </p>
-        <h3>What's WebGL?</h3>
-        <p>
-            WebGL is short for Web Graphics Library. It's a JavaScript API that allows programmers to create graphics in
-            HTML5 canvas elements. The best part? No plug-ins required! We've made learning even easier by providing
-            an online text editor and a canvas for your graphics. To test it out, click on one of the tutorials below.
-        </p>
-        <p>
-            This information (and much more about WebGL) can be found at <a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL: 2D and 3D graphics for the
-                web</a> from Mozilla Developer Network (MDN).
-        </p>
-        <p>
-            To get started, review the <a href="{{ url_for('introduction') }}">Introduction</a> and <a
-                href="{{ url_for('key_concepts') }}">Key Concepts</a> pages. Reference pages are provided including
-            further details on select <a href="{{ url_for('relevant_functions') }}">functions</a> and <a
-                href="{{ url_for('glossary') }}">terms</a>. When you are
-            ready to try it out, begin tutorial activities listed below.
-        </p>
-        <h3>Tutorials</h3>
-        <nav id="tutorial_list" class="nav flex-column">
-            {% for tutorial in tutorials %}
-            <a class="nav-link" href="{{ url_for('tutorial', id=tutorial.id) }}">{{ tutorial.name }}</a>
-            {% endfor %}
-        </nav>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href={{ url_for('home') }}">Tutorials</a>
+            </li>
 
-    </div>
-</body>
+            <li class="nav-item">
+                <a class="nav-link" href="/static/html/introduction.html">Introduction</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/static/html/key_concepts.html">Key Concepts</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/static/html/relevant_functions.html">Relevant Functions</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/static/html/glossary.html">Glossary</a>
+            </li>
+        </ul>
+    </nav>
+
+    <body>
+
+        <div class="col-12">
+            <h1>Let's Learn WebGL!</h1>
+            <p>
+                <i>Let's Learn WebGL</i> is a website that provides WebGL tutorials.
+            </p>
+            <h3>What's WebGL?</h3>
+            <p>
+                WebGL is short for Web Graphics Library. It's a JavaScript API that allows programmers to create
+                graphics in
+                HTML5 canvas elements. The best part? No plug-ins required! We've made learning even easier by providing
+                an online text editor and a canvas for your graphics. To test it out, click on one of the tutorials
+                below.
+            </p>
+            <p>
+                This information (and much more about WebGL) can be found at <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL: 2D and 3D graphics for the
+                    web</a> from Mozilla Developer Network (MDN).
+            </p>
+            <p>
+                To get started, review the <a href="/static/introduction.html>Introduction</a> and <a
+                    href=" /static/key_concepts.html">Key Concepts</a> pages. Reference pages are provided including
+                further details on select <a href="/static/relevant_functions.html">functions</a> and <a
+                    href="/static/glossary.html">terms</a>. When you are
+                ready to try it out, begin tutorial activities listed below.
+            </p>
+            <h3>Tutorials</h3>
+            <nav id="tutorial_list" class="nav flex-column">
+                {% for tutorial in tutorials %}
+                <a class="nav-link" href="{{ url_for('tutorial', id=tutorial.id) }}">{{ tutorial.name }}</a>
+                {% endfor %}
+            </nav>
+
+        </div>
+    </body>
 
 </html>
